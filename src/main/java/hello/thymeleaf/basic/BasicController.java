@@ -57,13 +57,6 @@ public class BasicController {
         return "basic/basic-objects";
     }
 
-    @Component("helloBean")
-    static class HelloBean {
-        public String hello(String data) {
-            return "Hello " + data;
-        }
-    }
-
     @GetMapping("/date")
     public String date(Model model) {
         model.addAttribute("localDateTime", LocalDateTime.now());
@@ -149,4 +142,12 @@ public class BasicController {
             this.age = age;
         }
     }
+
+    @Component("helloBean")
+    static class HelloBean {
+        public String hello(String data) {
+            return "Hello " + data;
+        }
+    }
+
 }
