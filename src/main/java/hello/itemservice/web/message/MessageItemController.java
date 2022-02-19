@@ -2,12 +2,14 @@ package hello.itemservice.web.message;
 
 import hello.itemservice.domain.item.Item;
 import hello.itemservice.domain.item.ItemRepository;
+import hello.itemservice.domain.lang.LanguageCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -16,6 +18,14 @@ import java.util.List;
 public class MessageItemController {
 
     private final ItemRepository itemRepository;
+
+    @ModelAttribute("languageCodes")
+    public List<LanguageCode> languageCodes() {
+        List<LanguageCode> languageCodes = new ArrayList<>();
+        languageCodes.add(new LanguageCode("ko_KR", "한국어"));
+        languageCodes.add(new LanguageCode("en_US", "English"));
+        return languageCodes;
+    }
 
     @GetMapping
     public String items(Model model) {

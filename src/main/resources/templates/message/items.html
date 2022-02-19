@@ -4,10 +4,24 @@
     <meta charset="utf-8">
     <link th:href="@{/css/bootstrap.min.css}"
             href="../css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 
+
 <div class="container" style="max-width: 600px">
+    <div>
+        <!--/*/<form th:action="@{/message/items}">/*/-->
+        <input type="hidden" name="hidden_lang" th:value="${#locale}" id="hidden_lang">
+        <div th:text="${#locale}"></div>
+        <select name="lang" class="form-select" id="lang">
+            <option th:each="languageCode : ${languageCodes}" th:value="${languageCode.code}"
+                    th:selected="(${languageCode.code} == ${#locale})"
+                    th:text="${languageCode.displayName}" >한국어</option>
+        </select>
+<!--        </form>-->
+    </div>
+
     <div class="py-5 text-center">
         <h2 th:text="#{page.items}">상품 목록</h2>
     </div>
@@ -44,6 +58,27 @@
     </div>
 
 </div> <!-- /container -->
+
+<script type="text/javascript">
+
+  $(function() {
+    var hidden_lang = $('#hidden_lang').val();
+    console.log(hidden_lang);
+    $("#lang").val(hidden_lang).find("option[value=" + hidden_lang +"]").attr('selected', true);
+
+    $("#lang").change(function () {
+        var selectedOption = $('#lang').val();
+        if (selectedOption != ''){
+            window.location.replace('/message/items?lang=' + selectedOption);
+        }
+    });
+    /*
+    jQuery('#lang').change(function() {
+        this.form.submit();
+    });
+    */
+});
+</script>
 
 </body>
 </html>

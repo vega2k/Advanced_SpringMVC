@@ -10,6 +10,7 @@ import org.springframework.context.support.ResourceBundleMessageSource;
 public class ItemServiceApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(ItemServiceApplication.class, args);
 	}
 
