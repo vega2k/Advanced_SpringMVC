@@ -139,10 +139,16 @@ public class LoginController {
     }
 
     @PostMapping("/logout")
-    public String logoutV3(HttpServletRequest request) {
+    public String logoutV3(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession(false);
         if (session != null) {
             session.invalidate();
+
+            Cookie cookieWithSlash = new Cookie("JSESSIONID", null);
+            //Tomcat adds extra slash at the end of context path (e.g. "/foo/")
+            cookieWithSlash.setPath(request.getContextPath() + "/");
+            cookieWithSlash.setMaxAge(0);
+            response.addCookie(cookieWithSlash);
         }
         return "redirect:/";
     }
