@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container" style="max-width: 600px">
+    <div class="py-5 text-center">
+        <h2>홈 화면</h2>
+    </div>
+
+    <hr class="my-4">
+    Session ID : <p th:text="${#session.id}">SessionID </p>
+    Session MaxInactiveInterval : <p th:text="${#session.maxInactiveInterval}">MaxInactiveInterval </p>
+    Session CreationTime : <p th:text="${#session.creationTime}">creationTime </p>
+    <p th:text="${#dates.format(#session.creationTime, 'yyyy-MM-dd hh:mm:ss')}">creationTime </p>
+    Session LastAccessedTime : <p th:text="${#session.lastAccessedTime}">LastAccessedTime </p>
+    <p th:text="${#dates.format(#session.LastAccessedTime, 'yyyy-MM-dd hh:mm:ss')}">creationTime </p>
+    Session isNew : <p th:text="${#session.isNew}">LastAccessedTime </p>
+
+</div> <!-- /container -->
+
+</body>
+</html>
