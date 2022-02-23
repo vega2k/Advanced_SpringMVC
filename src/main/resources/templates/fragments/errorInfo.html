@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+
+
+    <div>
+        <p>오류 화면 입니다.</p>
+        <ul>
+            <li>Exception : <span  th:text="${#request.getAttribute('javax.servlet.error.exception')}">Exception</span></li>
+            <li>ExceptionType : <span  th:text="${#request.getAttribute('javax.servlet.error.exception_type')}">ExceptionType</span></li>
+            <li>ErrorMessage : <span  th:text="${#request.getAttribute('javax.servlet.error.message')}">ErrorMessage</span></li>
+            <li>RequestURI : <span  th:text="${#request.getAttribute('javax.servlet.error.request_uri')}">RequestURI</span></li>
+            <li>ServletName : <span  th:text="${#request.getAttribute('javax.servlet.error.servlet_name')}">ServletName</span></li>
+            <li>ErrorStatusCode : <span  th:text="${#request.getAttribute('javax.servlet.error.status_code')}">ErrorStatusCode</span></li>
+        </ul>
+    </div>
+
+
+</body>
+</html>
