@@ -10,10 +10,8 @@
         <h2>500 오류 화면 스프링 부트 제공</h2>
     </div>
 
-    <div>
-        <p>오류 화면 입니다.</p>
-    </div>
-
+    <th:block th:include="fragments/errorInfo"></th:block>
+    <hr class="my-4">
     <ul>
         <li>오류 정보</li>
         <ul>
@@ -28,9 +26,6 @@
         </ul>
         </li>
     </ul>
-
-    <hr class="my-4">
-
 </div> <!-- /container -->
 
 </body>

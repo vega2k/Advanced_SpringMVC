@@ -12,6 +12,16 @@
 
     <div>
         <p>오류 화면 입니다.</p>
+        <ul>
+            <li>오류 정보</li>
+            <ul>
+                <li th:text="|timestamp: ${timestamp}|"></li>
+                <li th:text="|path: ${path}|"></li>
+                <li th:text="|status: ${status}|"></li>
+                <li th:text="|error: ${error}|"></li>
+            </ul>
+            </li>
+        </ul>
     </div>
 
     <hr class="my-4">
