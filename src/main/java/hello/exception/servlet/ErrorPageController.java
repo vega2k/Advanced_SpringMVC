@@ -39,6 +39,16 @@ public class ErrorPageController {
         return "error-page/500";
     }
 
+    private void printErrorInfo(HttpServletRequest request) {
+        log.info("ERROR_EXCEPTION: {}", request.getAttribute(ERROR_EXCEPTION));
+        log.info("ERROR_EXCEPTION_TYPE: {}", request.getAttribute(ERROR_EXCEPTION_TYPE));
+        log.info("ERROR_MESSAGE: {}", request.getAttribute(ERROR_MESSAGE));
+        log.info("ERROR_REQUEST_URI: {}", request.getAttribute(ERROR_REQUEST_URI));
+        log.info("ERROR_SERVLET_NAME: {}", request.getAttribute(ERROR_SERVLET_NAME));
+        log.info("ERROR_STATUS_CODE: {}", request.getAttribute(ERROR_STATUS_CODE));
+        log.info("dispatchType={}", request.getDispatcherType());
+    }
+
     @RequestMapping(value = "/error-page/500", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Map<String, Object>> errorPage500Api(
             HttpServletRequest request, HttpServletResponse response) {
@@ -54,13 +64,4 @@ public class ErrorPageController {
         return new ResponseEntity<>(result, HttpStatus.valueOf(statusCode));
     }
 
-    private void printErrorInfo(HttpServletRequest request) {
-        log.info("ERROR_EXCEPTION: {}", request.getAttribute(ERROR_EXCEPTION));
-        log.info("ERROR_EXCEPTION_TYPE: {}", request.getAttribute(ERROR_EXCEPTION_TYPE));
-        log.info("ERROR_MESSAGE: {}", request.getAttribute(ERROR_MESSAGE));
-        log.info("ERROR_REQUEST_URI: {}", request.getAttribute(ERROR_REQUEST_URI));
-        log.info("ERROR_SERVLET_NAME: {}", request.getAttribute(ERROR_SERVLET_NAME));
-        log.info("ERROR_STATUS_CODE: {}", request.getAttribute(ERROR_STATUS_CODE));
-        log.info("dispatchType={}", request.getDispatcherType());
-    }
 }
