@@ -40,6 +40,7 @@ public class ItemController {
     public String saveItem(@ModelAttribute ItemForm form, RedirectAttributes redirectAttributes) throws IOException {
         UploadFile attachFile = fileStore.storeFile(form.getAttachFile());
         List<UploadFile> storeImageFiles = fileStore.storeFiles(form.getImageFiles());
+        log.info("<<<< storeImageFiles={}", storeImageFiles);
 
         //데이터베이스에 저장
         Item item = new Item();
@@ -56,6 +57,7 @@ public class ItemController {
     @GetMapping("/items/{id}")
     public String items(@PathVariable Long id, Model model) {
         Item item = itemRepository.findById(id);
+        log.info("item.getImageFiles() Size={}", item.getImageFiles().size());
         model.addAttribute("item", item);
         return "item-view";
     }
@@ -74,10 +76,12 @@ public class ItemController {
 
         UrlResource resource = new UrlResource("file:" + fileStore.getFullPath(storeFileName));
 
-        log.info("uploadFileName={}", uploadFileName);
+        log.info(">>>> uploadFileName={}", uploadFileName);
 
         String encodedUploadFileName = UriUtils.encode(uploadFileName, StandardCharsets.UTF_8);
         String contentDisposition = "attachment; filename=\"" + encodedUploadFileName + "\"";
+        log.info(">>>> encodedUploadFileName={}", encodedUploadFileName);
+        log.info(">>>> contentDisposition={}", contentDisposition);
 
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, contentDisposition)
