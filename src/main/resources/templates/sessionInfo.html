@@ -18,8 +18,8 @@
     Session CreationTime : <p th:text="${#session.creationTime}">creationTime </p>
     <p th:text="${#dates.format(#session.creationTime, 'yyyy-MM-dd hh:mm:ss')}">creationTime </p>
     Session LastAccessedTime : <p th:text="${#session.lastAccessedTime}">LastAccessedTime </p>
-    <p th:text="${#dates.format(#session.LastAccessedTime, 'yyyy-MM-dd hh:mm:ss')}">creationTime </p>
-    Session isNew : <p th:text="${#session.isNew}">LastAccessedTime </p>
+    <p th:text="${#dates.format(#session.LastAccessedTime, 'yyyy-MM-dd hh:mm:ss')}">LastAccessedTime </p>
+    Session isNew : <p th:text="${#session.isNew}">isNew </p>
 
 </div> <!-- /container -->
 
